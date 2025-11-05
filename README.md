@@ -83,3 +83,7 @@ Refer to the `codebase-qna` branch for a complete implementation of this agent.
 1. Add multi-turn conversation to reply to your agent's answers
 2. Add streaming to your agent to see the answer as it generates
 3. Experiment with more tools! (e.g. `grep`, `find`)
+
+
+## Reference Docs
+- https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview
