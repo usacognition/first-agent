@@ -8,9 +8,12 @@ load_dotenv()
 
 
 class Agent:    
-    def __init__(self):
+    def __init__(self, base_path: str = "."):
         """
         Initialize the agent.
+        
+        Args:
+            base_path: The root directory of the codebase to work with
         """
         api_key = os.environ.get("ANTHROPIC_API_KEY")
         if not api_key:
@@ -18,7 +21,7 @@ class Agent:
         
         self.client = Anthropic(api_key=api_key)
         self.tool_handler = ToolHandler()
-        self.system_prompt = "You are an AI agent. Use the available tools to respond to the user's query."
+        self.system_prompt = f"You are an AI software engineering agent working in a codebase. Use the available tools to respond to the user's query about the current codebase. The codebase root is: {base_path}"
     
     def run(self, user_query: str, max_iterations: int = 10) -> str:
         """
@@ -99,10 +102,13 @@ class Agent:
 
 
 def main():    
-    # TODO: get the user to input the base path to a local codebase
-    # Pass it into Agent initialization as a parameter
+    # Get the user to input the base path to a local codebase
+    base_path = input("Enter path to local codebase: ").strip()
+    if base_path.startswith('~'):
+        base_path = os.path.expanduser(base_path)
     
-    agent = Agent()
+    # Initialize the agent with the base path
+    agent = Agent(base_path=base_path)
 
     query = input("Enter your query: ")
     answer = agent.run(query)
