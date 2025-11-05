@@ -69,10 +69,17 @@ Currently, the agent only works with the current directory. The simplest way to 
 2. Provide this base path in the system prompt
 3. Modify the `ls` and `read_file` tools to use absolute paths
 
+_For a quick hack, you can also copy your repo into this directory to give the agent access to it!_
+
 Refer to the `codebase-qna` branch for a complete implementation of this agent.
+
+
+## Next Steps
+1. Customize your system prompt! For example, add additional instructions to customize answer format.
+2. Use different models - try `claude-sonnet-4-5` for smarter but slower responses.
 
 
 ## Bonus Challenges
 1. Add multi-turn conversation to reply to your agent's answers
 2. Add streaming to your agent to see the answer as it generates
-3. Experiment with more tools!
+3. Experiment with more tools! (e.g. `grep`, `find`)
