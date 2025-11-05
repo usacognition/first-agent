@@ -54,6 +54,9 @@ class Agent:
                 tools=self.tool_handler.tools,
                 messages=messages
             )
+
+            # response.content is a list of text blocks and tool_use blocks.
+            # If there are no tool_use blocks, then the LLM is done thinking and wants to provide a final answer.
             
             # Check if any tools were called
             tool_use_blocks = [block for block in response.content if block.type == "tool_use"]
